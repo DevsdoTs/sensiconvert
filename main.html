@@ -14,22 +14,22 @@
     </header>
     <main>
       <form>
-        <div>
+        <fieldset>
             <label for="gameIn">From game</label>
             <select required id="gameIn"></select>
-        </div>  
-        <div>
+        </fieldset>  
+        <fieldset>
             <label for="gameOut">To game</label>
             <select required id="gameOut"></select>
-        </div>   
-        <div>
+        </fieldset>   
+        <fieldset>
           <label for="sensIn">Sensibilidade</label>
           <input onchange="getGameSensIn()" type="number" id="sensIn" value="0.01" step=".01" />
-        </div>
-        <div>
+        </fieldset>
+        <fieldset>
             <label for="sensOut">Sensibilidade</label>
             <input readonly type="number" id="sensOut" value="0.01" step=".01" />
-          </div>
+          </fieldset>
       </form>
     </main>
     <script src="script.js"></script>
