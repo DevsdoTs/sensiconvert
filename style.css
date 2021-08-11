@@ -1,0 +1,23 @@
+body {
+    font-family: sans-serif;
+    background: rgb(76,164,109);
+}
+
+h1, h2 {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-align: center;
+}
+
+h1 {
+    top: 24px;
+    color: rgb(247, 247, 247);
+    font-size: 12px;
+}
+
+h2 {
+    top: 44px;
+    font-size: 10px;
+    color:rgb(247, 247, 247);
+    opacity: 0.7;
+}
