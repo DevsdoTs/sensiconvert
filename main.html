@@ -1,13 +1,37 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <title>Sens-Converter</title>
-</head>
-<body>
+  </head>
+  <body>
+    <header>
+      <h1>Sens-Converter</h1>
+      <h2>Converta sua sensibilidade</h2>
+    </header>
+    <main>
+      <form>
+        <div>
+            <label for="gameIn">From game</label>
+            <select required id="gameIn"></select>
+        </div>  
+        <div>
+            <label for="gameOut">To game</label>
+            <select required id="gameOut"></select>
+        </div>   
+        <div>
+          <label for="sensIn">Sensibilidade</label>
+          <input type="number" id="sensIn" value="0.01" step=".01" />
+        </div>
+        <div>
+            <label for="sensOut">Sensibilidade</label>
+            <input readonly type="number" id="sensOut" value="0.01" step=".01" />
+          </div>
+      </form>
+    </main>
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
