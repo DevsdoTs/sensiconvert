@@ -1,4 +1,4 @@
-const games = ['CS:GO', 'Fortnite', 'Apex Legends','Battlefield V', 'Overwatch', 'Valorant'];
+const games = ['CSGO', 'Fortnite', 'Apex Legends', 'Battlefield V', 'Overwatch', 'Valorant'];
 
 function createOptionGames(selector) {
   for (let index in games) {
@@ -16,37 +16,37 @@ function converting() {
   const sensIn = document.getElementById('sensIn');
   const gameIn = document.getElementById('gameIn');
   const gameOut = document.getElementById('gameOut');
-  let gameSensOut = document.getElementById('sensOut').value;
 
-  gameSensOut = sensIn.addEventListener('change', function () {
-    let sensInValue = parseFloat(sensIn.value);
-    let gameInValue = gameIn.value;
-    let gameOutValue = gameOut.value;
-    
-    let sensCs = convertingToCs(gameInValue, sensInValue);
-    return convertingFromCs(gameOutValue, sensCs);
+  // sensIn.addEventListener('change', function () {
+  let sensInValue = parseFloat(sensIn.value);
+  let gameInName = gameIn.value;
+  let gameOutName = gameOut.value;
+  console.log(`sensIn ${sensInValue}, gameIn ${gameInName}, gameOutName ${gameOutName}`);
+  let sensCs = convertingToCs(gameInName, sensInValue);
 
-  })
+  document.getElementById('sensOut').value = convertingFromCs(gameOutName, sensCs);
+
+// })
 
 }
 
-function convertingToCs(gameInValue, sensInValue) {
-  let sensCS = gamesIn[gameInValue].base + ((sensInValue - 1) * gamesIn[gameInValue].offset);
-  return sensCS;
+function convertingToCs(gameName, sensInValue) {
+  let sens = gamesIn[gameName].base + ((sensInValue - 1) * gamesIn[gameName].offset);
+  return sens;
 }
 
-function convertingFromCs(gameOutValue, sensCS){
-  let sensOut = gamesOut[gameOutValue].base + ((sensCS - 1) * gamesOut[gameOutValue].offset);
+function convertingFromCs(gameOutValue, sensCS) {
+  let sensOut = gamesOut[gameOutValue].base + ((sensCS) * gamesOut[gameOutValue].offset);
   return sensOut;
 }
 
 const gamesIn = {
   'CSGO': {
-    base: 0,
+    base: 1,
     offset: 1
   },
   'Apex Legends': {
-    base: 0,
+    base: 1,
     offset: 1
   },
   'Fortnite': {
@@ -58,8 +58,8 @@ const gamesIn = {
     offset: 3.181818
   },
   'Overwatch': {
-    base: 0.841667,
-    offset: 0.841667
+    base: 0.3,
+    offset: 0.3
   },
   'Battlefield V': {
     base: 0.677132,
