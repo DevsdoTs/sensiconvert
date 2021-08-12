@@ -14,18 +14,18 @@
     </header>
     <main>
       <form>
-        <ul></ul>
         <fieldset>
             <label for="gameIn">From game</label>
-            <select required id="gameIn"></select>
-        </fieldset>  
+            <select required id="gameIn" onchange="converting()"></select>
+        </fieldset>
+        <button onclick="swapValues()" type="button">Swap</button>  
         <fieldset>
             <label for="gameOut">To game</label>
-            <select required id="gameOut"></select>
+            <select required id="gameOut" onchange="converting()"></select>
         </fieldset>   
         <fieldset>
           <label for="sensIn">Sensibilidade</label>
-          <input onchange="converting()" type="number" id="sensIn" value="0.01" step=".01" />
+          <input onkeyup="converting()" type="number" id="sensIn" value="0.01" step=".01" />
         </fieldset>
         <fieldset>
             <label for="sensOut">Sensibilidade</label>

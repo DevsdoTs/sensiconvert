@@ -18,13 +18,13 @@ function converting() {
   const gameOut = document.getElementById('gameOut');
 
   // sensIn.addEventListener('change', function () {
-  let sensInValue = parseFloat(sensIn.value);
+  let sensInValue = parseFloat(sensIn.value).toFixed(3);
   let gameInName = gameIn.value;
   let gameOutName = gameOut.value;
   console.log(`sensIn ${sensInValue}, gameIn ${gameInName}, gameOutName ${gameOutName}`);
   let sensCs = convertingToCs(gameInName, sensInValue);
-
-  document.getElementById('sensOut').value = convertingFromCs(gameOutName, sensCs);
+  if(gameOutName === 'CSGO' | gameOutName === 'Apex Legends') document.getElementById('sensOut').value = sensCs.toFixed(3);
+  else document.getElementById('sensOut').value = convertingFromCs(gameOutName, sensCs);
 
 // })
 
@@ -35,9 +35,9 @@ function convertingToCs(gameName, sensInValue) {
   return sens;
 }
 
-function convertingFromCs(gameOutValue, sensCS) {
-  let sensOut = gamesOut[gameOutValue].base + ((sensCS) * gamesOut[gameOutValue].offset);
-  return sensOut;
+function convertingFromCs(gameName, sensCS) {
+  let sensOut = gamesOut[gameName].base + ((sensCS - 1) * gamesOut[gameName].offset);
+  return sensOut.toFixed(3);
 }
 
 const gamesIn = {
@@ -95,3 +95,20 @@ const gamesOut = {
   }
 }
 
+function swapValues() {
+  const sensOut = document.getElementById('sensOut');
+  const gameIn = document.getElementById('gameIn');
+  const gameOut = document.getElementById('gameOut');
+  const sensIn = document.getElementById('sensIn');
+  let handleGameIn ;
+  let handleSensIn ;
+
+  handleGameIn = gameIn.value;
+  gameIn.value = gameOut.value;
+  gameOut.value = handleGameIn;
+
+  handleSensIn = sensIn.value;
+  sensIn.value = sensOut.value;
+  sensOut.value = handleSensIn;
+
+}
