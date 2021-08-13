@@ -1,46 +1,6 @@
-const games = ['CSGO', 'Fortnite', 'Apex Legends', 'Battlefield V', 'Overwatch', 'Valorant'];
+const GAME_NAME = ['CSGO', 'Fortnite', 'Apex Legends', 'Battlefield V', 'Overwatch', 'Valorant']
 
-function createOptionGames(selector) {
-  for (let index in games) {
-    let gamesSelect = document.createElement('option');
-    gamesSelect.innerHTML = games[index];
-    document.getElementById(selector).appendChild(gamesSelect);
-  }
-}
-
-createOptionGames('gameIn');
-createOptionGames('gameOut');
-
-
-function converting() {
-  const sensIn = document.getElementById('sensIn');
-  const gameIn = document.getElementById('gameIn');
-  const gameOut = document.getElementById('gameOut');
-
-  // sensIn.addEventListener('change', function () {
-  let sensInValue = parseFloat(sensIn.value).toFixed(3);
-  let gameInName = gameIn.value;
-  let gameOutName = gameOut.value;
-  console.log(`sensIn ${sensInValue}, gameIn ${gameInName}, gameOutName ${gameOutName}`);
-  let sensCs = convertingToCs(gameInName, sensInValue);
-  if(gameOutName === 'CSGO' | gameOutName === 'Apex Legends') document.getElementById('sensOut').value = sensCs.toFixed(3);
-  else document.getElementById('sensOut').value = convertingFromCs(gameOutName, sensCs);
-
-// })
-
-}
-
-function convertingToCs(gameName, sensInValue) {
-  let sens = gamesIn[gameName].base + ((sensInValue - 1) * gamesIn[gameName].offset);
-  return sens;
-}
-
-function convertingFromCs(gameName, sensCS) {
-  let sensOut = gamesOut[gameName].base + ((sensCS - 1) * gamesOut[gameName].offset);
-  return sensOut.toFixed(3);
-}
-
-const gamesIn = {
+const GAME_IN = {
   'CSGO': {
     base: 1,
     offset: 1
@@ -67,8 +27,7 @@ const gamesIn = {
   }
 }
 
-
-const gamesOut = {
+const GAME_OUT = {
   'CSGO': {
     base: 0,
     offset: 1
@@ -95,20 +54,53 @@ const gamesOut = {
   }
 }
 
+function createOptionGames(selector) {
+  for (let index in GAME_NAME) {
+    let gamesSelect = document.createElement('option')
+    gamesSelect.innerHTML = GAME_NAME[index]
+    let selectElement = document.getElementById(selector)
+    selectElement.appendChild(gamesSelect)
+  }
+}
+
+function convertingToCs(gameName, sensInValue) {
+  let sens = GAME_IN[gameName].base + ((sensInValue - 1) * GAME_IN[gameName].offset)
+  return sens
+}
+
+function convertingFromCs(gameName, sensCS) {
+  let sensOut = GAME_OUT[gameName].base + ((sensCS - 1) * GAME_OUT[gameName].offset)
+  return sensOut.toFixed(3)
+}
+
+function converting() {
+  const sensIn = document.getElementById('sensIn')
+  const gameIn = document.getElementById('gameIn')
+  const gameOut = document.getElementById('gameOut')
+
+  let sensInValue = parseFloat(sensIn.value).toFixed(3)
+  let gameInName = gameIn.value
+  let gameOutName = gameOut.value
+  let sensCs = convertingToCs(gameInName, sensInValue)
+
+  if (gameOutName === 'CSGO' | gameOutName === 'Apex Legends') {
+    document.getElementById('sensOut').value = sensCs.toFixed(3)
+  } else {
+    document.getElementById('sensOut').value = convertingFromCs(gameOutName, sensCs)
+  }
+}
+
 function swapValues() {
-  const sensOut = document.getElementById('sensOut');
-  const gameIn = document.getElementById('gameIn');
-  const gameOut = document.getElementById('gameOut');
-  const sensIn = document.getElementById('sensIn');
-  let handleGameIn ;
-  let handleSensIn ;
+  const sensOut = document.getElementById('sensOut')
+  const gameIn = document.getElementById('gameIn')
+  const gameOut = document.getElementById('gameOut')
+  const sensIn = document.getElementById('sensIn')
 
-  handleGameIn = gameIn.value;
-  gameIn.value = gameOut.value;
-  gameOut.value = handleGameIn;
+  let handleGameIn = gameIn.value
+  gameIn.value = gameOut.value
+  gameOut.value = handleGameIn
 
-  handleSensIn = sensIn.value;
-  sensIn.value = sensOut.value;
-  sensOut.value = handleSensIn;
-
+  let handleSensIn = sensIn.value
+  sensIn.value = sensOut.value
+  sensOut.value = handleSensIn
 }
