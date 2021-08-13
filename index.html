@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
     <title>Sens-Converter</title>
+    <script src="script.js"></script>
   </head>
   <body>
     <header>
@@ -14,24 +15,28 @@
     </header>
     <main>
       <form>
-        <div>
+        <fieldset>
             <label for="gameIn">From game</label>
-            <select required id="gameIn"></select>
-        </div>  
-        <div>
+            <select required id="gameIn" onchange="converting()"></select>
+        </fieldset>
+        <button onclick="swapValues()" type="button">Swap</button>  
+        <fieldset>
             <label for="gameOut">To game</label>
-            <select required id="gameOut"></select>
-        </div>   
-        <div>
+            <select required id="gameOut" onchange="converting()"></select>
+        </fieldset>   
+        <fieldset>
           <label for="sensIn">Sensibilidade</label>
-          <input onchange="getGameSensIn()" type="number" id="sensIn" value="0.01" step=".01" />
-        </div>
-        <div>
+          <input onkeyup="converting()" type="number" id="sensIn" value="0.01" step=".01" />
+        </fieldset>
+        <fieldset>
             <label for="sensOut">Sensibilidade</label>
             <input readonly type="number" id="sensOut" value="0.01" step=".01" />
-          </div>
+          </fieldset>
       </form>
     </main>
-    <script src="script.js"></script>
+    <script>
+      createOptionGames('gameIn')
+      createOptionGames('gameOut')
+    </script>
   </body>
 </html>
