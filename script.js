@@ -58,6 +58,8 @@ function createOptionGames(selector) {
   for (let index in GAME_NAME) {
     let gamesSelect = document.createElement('option')
     gamesSelect.innerHTML = GAME_NAME[index]
+    gamesSelect.setAttribute('value', GAME_NAME[index]);
+    gamesSelect.className;
     let selectElement = document.getElementById(selector)
     selectElement.appendChild(gamesSelect)
   }
@@ -103,4 +105,9 @@ function swapValues() {
   let handleSensIn = sensIn.value
   sensIn.value = sensOut.value
   sensOut.value = handleSensIn
+}
+
+window.onload = () => {
+  createOptionGames('gameIn')
+  createOptionGames('gameOut')
 }
