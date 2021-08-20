@@ -1,25 +1,25 @@
 body {
-  background-color: #F3EEE2;
+  background-color: #000000;
     
 }
 header {
-    color: #262322;
+    color: white;
 }
 .form-floating {
-    background-color: #F3EEE2;
+    background-color: white;
     border-radius: 25px;
 }
 .btn-outline-info {
-    color: #262322;
-    border-color: #262322;
+    color: white;
+    border-color: white;
 }
 
 .btn-outline-info:hover {
-    background-color: #262322;
-    color: #F3EEE2;
+    background-color: white;
+    color: #262322;
 }
 
 .form-control, .form-select {
-    background-color: #F3EEE2;
+    background-color: white;
     color: #262322;
 }
